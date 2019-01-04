@@ -5,6 +5,7 @@ const passport = require("passport");
 
 const User = require("../../models/User");
 const Profile = require("../../models/Profile");
+const validateProfileInput = require("../../validation/profile");
 
 // @route   GET api/profile
 // @desc    Get Profile of logged in user
@@ -34,9 +35,11 @@ router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    const { errors, isValid } = validateProfileInput(req.body);
+    if (!isValid) return res.status(400).json(errors);
+
     const profileFields = fillProfileFields(req.body);
     profileFields.user = req.user.id;
-    const errors = {};
 
     Profile.findOne({ handle: profileFields.handle })
       .then(profile => {
