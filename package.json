@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "backend-install": "npm install --prefix backend",
+    "frontend-install": "npm install --prefix frontend",
+    "client": "npm start --prefix frontend",
+    "server": "cd ./backend && nodemon ./index.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "dependencies": {
+    "concurrently": "^4.1.0"
+  }
+}
