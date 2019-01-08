@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-// const mongoose = require("mongoose");
 const passport = require("passport");
 
 const Post = require("../../models/Post");
@@ -109,9 +108,7 @@ router.post(
       })
       .catch(err => {
         console.log(err);
-        if (!res.headersSent) {
-          res.status(500).send("Something went wrong...");
-        }
+        if (!res.headersSent) res.status(500).send("Something went wrong...");
       });
   }
 );
@@ -183,9 +180,7 @@ router.delete(
       })
       .catch(err => {
         console.log(err);
-        if (!res.headersSent) {
-          res.status(500).send("Something went wrong...");
-        }
+        if (!res.headersSent) res.status(500).send("Something went wrong...");
       });
   }
 );
