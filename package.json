@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "full-install": "npm run backend-install && npm run frontend-install",
     "backend-install": "npm install --prefix backend",
     "frontend-install": "npm install --prefix frontend",
     "client": "npm start --prefix frontend",
