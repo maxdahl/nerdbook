@@ -1,5 +1,9 @@
 import * as actions from "./types";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
+import setAuthToken from "../utils/setAuthToken";
+
+import { clearProfile } from "./profileActions";
 
 // Register
 export const registerUser = (userData, history) => dispatch => {
@@ -14,4 +18,40 @@ export const registerUser = (userData, history) => dispatch => {
         payload: err.response.data
       });
     });
+};
+
+// Login and get user token
+export const loginUser = userData => dispatch => {
+  axios
+    .post("/api/users/login", userData)
+    .then(res => {
+      const { token } = res.data;
+      localStorage.setItem("jwtToken", token);
+
+      setAuthToken(token);
+      const decoded = jwt_decode(token);
+
+      dispatch(setCurrentUser(decoded));
+    })
+    .catch(err => {
+      dispatch({
+        type: actions.GET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
+
+export const setCurrentUser = userData => {
+  return {
+    type: actions.SET_CURRENT_USER,
+    payload: userData
+  };
+};
+
+export const logoutUser = () => dispatch => {
+  localStorage.removeItem("jwtToken");
+  setAuthToken(false);
+
+  dispatch(setCurrentUser({}));
+  dispatch(clearProfile());
 };

@@ -79,7 +79,7 @@ router.post("/login", (req, res) => {
       if (!user) {
         return res
           .status(400)
-          .json({ credentials: "Email/Password incorrect" });
+          .json({ email: "Email or Password is incorrect" });
       }
 
       // Success!!
