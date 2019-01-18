@@ -143,7 +143,7 @@ const fillProfileFields = data => {
   if (data.company) profileFields.company = data.company;
   if (data.website) profileFields.website = data.website;
   if (data.location) profileFields.location = data.location;
-  if (data.bio) profileFields.bio = data.bio;
+  if (data.bio || data.bio === "") profileFields.bio = data.bio;
   if (data.status) profileFields.status = data.status;
   if (data.githubusername) profileFields.githubusername = data.githubusername;
 

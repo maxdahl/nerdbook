@@ -82,9 +82,8 @@ class Navbar extends Component {
                 </Link>
               </li>
             </ul>
+            {navLinks}
           </div>
-
-          {navLinks}
         </div>
       </nav>
     );
