@@ -9,7 +9,7 @@ class ProfileGithub extends Component {
       clientId: "4c499e275e46905d188c",
       clientSecret: "59ba5ff56c2ac61fd71901b042dfb44a2e2d21b0",
       count: 5,
-      sort: "pushed: asc",
+      sort: "updated",
       repos: []
     };
   }
