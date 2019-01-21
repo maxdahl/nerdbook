@@ -9,6 +9,7 @@ import ProfileCredentials from "./ProfileCredentials";
 import ProfileGithub from "./ProfileGithub";
 
 import Spinner from "../common/Spinner";
+import NotFound from "../common/NotFound";
 
 import { getProfileByHandle } from "../../actions/profileActions";
 
@@ -22,7 +23,7 @@ class Profile extends Component {
     const { profile, loading } = this.props.profile;
 
     if (loading) return <Spinner />;
-    if (profile === null) return <h1>Profile not found</h1>;
+    if (profile === null) return <NotFound />;
 
     return (
       <div className="profile">
