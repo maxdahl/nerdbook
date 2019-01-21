@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 class ProfileGithub extends Component {
@@ -22,7 +21,7 @@ class ProfileGithub extends Component {
       `https://api.github.com/users/${username}/repos?per_page=${count}&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`
     )
       .then(res => {
-        if (res.status !== 200) throw "Error getting repos";
+        if (res.status !== 200) throw res;
         return res.json();
       })
       .then(data => {

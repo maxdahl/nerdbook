@@ -21,6 +21,8 @@ import CreateProfile from "./components/create-profile/CreateProfile";
 import EditProfile from "./components/edit-profile/EditProfile";
 import AddExperience from "./components/add-credentials/AddExperience";
 import AddEducation from "./components/add-credentials/AddEducation";
+import Posts from "./components/posts/Posts";
+import Post from "./components/post/Post";
 
 import NotFound from "./components/common/NotFound";
 
@@ -79,6 +81,8 @@ class App extends Component {
                   path="/add-education"
                   component={AddEducation}
                 />
+                <PrivateRoute exact path="/feed" component={Posts} />
+                <PrivateRoute exact path="/post/:id" component={Post} />
                 <Route component={NotFound} />
               </Switch>
             </div>
