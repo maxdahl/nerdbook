@@ -30,7 +30,6 @@ export const loginUser = userData => dispatch => {
 
       setAuthToken(token);
       const decoded = jwt_decode(token);
-
       dispatch(setCurrentUser(decoded));
     })
     .catch(err => {
@@ -48,10 +47,11 @@ export const setCurrentUser = userData => {
   };
 };
 
-export const logoutUser = () => dispatch => {
+export const logoutUser = (user, profile) => dispatch => {
   localStorage.removeItem("jwtToken");
   setAuthToken(false);
 
+  const bClearProfile = user.name !== profile.user.name;
   dispatch(setCurrentUser({}));
-  dispatch(clearProfile());
+  if (bClearProfile) dispatch(clearProfile());
 };

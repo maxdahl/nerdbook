@@ -7,7 +7,7 @@ import { logoutUser } from "../../actions/authActions";
 class Navbar extends Component {
   onLogoutClick = e => {
     e.preventDefault();
-    this.props.logoutUser();
+    this.props.logoutUser(this.props.auth.user, this.props.profile.profile);
     //window.location.href = "/login";
   };
 
@@ -92,12 +92,14 @@ class Navbar extends Component {
 
 Navbar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => {
   return {
-    auth: state.auth
+    auth: state.auth,
+    profile: state.profile
   };
 };
 

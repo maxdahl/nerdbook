@@ -11,12 +11,16 @@ import ProfileGithub from "./ProfileGithub";
 import Spinner from "../common/Spinner";
 import NotFound from "../common/NotFound";
 
-import { getProfileByHandle } from "../../actions/profileActions";
+import { getProfileByHandle, clearProfile } from "../../actions/profileActions";
 
 class Profile extends Component {
   componentWillMount() {
     const handle = this.props.match.params.handle;
     this.props.getProfileByHandle(handle);
+  }
+
+  componentWillUnmount() {
+    this.props.clearProfile();
   }
 
   render() {
@@ -71,5 +75,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getProfileByHandle }
+  { getProfileByHandle, clearProfile }
 )(Profile);
