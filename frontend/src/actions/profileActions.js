@@ -2,6 +2,23 @@ import axios from "axios";
 
 import * as actions from "./types";
 
+export const getProfileById = userId => dispatch => {
+  axios
+    .get(`/api/profile/user/${userId}`)
+    .then(res => {
+      dispatch({
+        type: actions.GET_PROFILE,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: actions.GET_PROFILE,
+        payload: null
+      });
+    });
+};
+
 export const getProfiles = () => dispatch => {
   dispatch(profileLoading());
   axios

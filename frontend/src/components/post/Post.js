@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import Spinner from "../common/Spinner";
 import PostItem from "../posts/PostItem";
 
+import Comment from "../comment/Comment";
+
 import { getPost } from "../../actions/postActions";
 
 class Post extends Component {
@@ -20,7 +22,9 @@ class Post extends Component {
       loading || post === null ? (
         <Spinner />
       ) : (
-        <PostItem post={post} showActions={false} />
+        <div>
+          <PostItem post={post} showActions={false} /> <Comment />
+        </div>
       );
 
     return (
