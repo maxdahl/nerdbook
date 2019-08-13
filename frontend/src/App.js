@@ -30,6 +30,9 @@ import store from "./store";
 
 import "./assets/css/App.css";
 
+import axios from "axios";
+axios.defaults.baseURL = "http://176.9.90.168:5000";
+
 // Check for token
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);

@@ -90,7 +90,7 @@ router.post("/login", (req, res) => {
       };
 
       jwt.sign(
-        payload,
+        payload, 
         process.env.JWT_TOKEN,
         { expiresIn: "1d" },
         (err, token) => {

@@ -3,15 +3,15 @@ require("dotenv").config();
 // Setup
 const mongoose = require("mongoose");
 mongoose
-  .connect(
-    process.env.mongoURI,
-    { useNewUrlParser: true }
-  )
+  .connect(process.env.mongoURI, { useNewUrlParser: true })
   .then(() => console.log("Connected to MongoDB"))
   .catch(err => console.log(err));
 
 const express = require("express");
+const cors = require("cors");
 const app = express();
+
+app.use(cors());
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
